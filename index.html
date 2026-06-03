@@ -1,201 +1,606 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Young Lecturer Program | Innovative University College</title>
+import { useState } from 'react';
+import {
+  CheckCircle,
+  ChevronDown,
+  MessageCircle,
+  Play,
+  Star,
+  Users,
+  BookOpen,
+  Award,
+  Clock,
+  Monitor,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+} from 'lucide-react';
 
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
-    body{background:#f5f5f7;color:#1d1d1f;line-height:1.6}
-    .container{width:90%;max-width:1100px;margin:auto}
-    header{background:#2f43b8;color:#fff;text-align:center;padding:14px;font-size:15px;letter-spacing:.3px}
-    .hero{background:linear-gradient(135deg,#0e1b2a,#1f3a5f);color:#fff;text-align:center;padding:80px 20px}
-    .badge{display:inline-block;background:#b89b5e;padding:8px 18px;border-radius:30px;font-weight:700;margin-bottom:20px}
-    h1{font-size:44px;line-height:1.15;margin-bottom:20px}
-    .hero p{max-width:760px;margin:0 auto 32px;color:#f5f5f7;font-size:18px}
-    .btn{display:inline-block;background:#d50000;color:#fff;padding:15px 28px;border-radius:8px;text-decoration:none;font-weight:700}
-    .btn:hover{opacity:.9}
-    .btn-gold{background:#b89b5e}
-    .btn-blue{background:#0071e3}
-    section{padding:55px 0}
-    .card{background:#fff;border-radius:18px;padding:36px;box-shadow:0 10px 30px rgba(0,0,0,.07);margin-bottom:25px}
-    h2{font-size:30px;color:#0e1b2a;margin-bottom:20px;text-align:center}
-    .blue-title{background:#2f43b8;color:#fff;padding:12px;border-radius:6px;text-align:center;margin-bottom:25px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .box{border:1px solid #e5e5e5;border-radius:14px;padding:24px;background:#fff}
-    .box h3{color:#1f3a5f;margin-bottom:8px}
-    ul{list-style:none}
-    li{padding:13px 0;border-bottom:1px solid #e5e5e5}
-    li:before{content:"✅ ";margin-right:8px}
-    .price{font-size:36px;font-weight:800;color:#1f3a5f;margin:15px 0}
-    .center{text-align:center}
-    .note{font-size:14px;color:#6e6e73;margin-top:16px}
-    details{background:#f1f1f1;margin-bottom:8px;padding:17px;border-radius:6px}
-    summary{font-weight:700;cursor:pointer}
-    details p{margin-top:14px;color:#333}
-    footer{background:#0e1b2a;color:#fff;text-align:center;padding:28px;font-size:14px}
-
-    @media(max-width:768px){
-      h1{font-size:32px}
-      .grid{grid-template-columns:1fr}
-      .card{padding:25px}
-    }
-  </style>
-</head>
-
-<body>
-
-<header>
-  <strong>Young Lecturer Program is Now Open</strong><br>
-  A chance for graduates to step into the world of teaching and make a difference.
-</header>
-
-<div class="hero">
-  <div class="container">
-    <div class="badge">Young Lecturer Program 2.0</div>
-    <h1>Congratulations, Your Conditional Offer Letter Has Been Issued</h1>
-    <p>
-      You are one step closer to joining the Young Lecturer Program — an online, weekend-based program jointly offered by Yayasan Pendidikan Rakyat (YPR) and Innovative University College (IUC).
-    </p>
-    <a href="#payment" class="btn btn-gold">Secure My Placement</a>
-  </div>
-</div>
-
-<section>
-  <div class="container">
-    <div class="card">
-      <h2 class="blue-title">This Program is Designed For</h2>
-      <ul>
-        <li>Recent graduates: Degree, Bachelor’s, Master, or PhD level</li>
-        <li>Unemployed individuals seeking to enhance their skills</li>
-        <li>Working professionals exploring career transition or additional income opportunities</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h2 class="blue-title">Program Information</h2>
-      <div class="grid">
-        <div class="box">
-          <h3>Learning Mode</h3>
-          <p>Fully online</p>
+/* ─────────────────────── Nav ─────────────────────── */
+function Nav() {
+  return (
+    <nav className="sticky top-0 z-50 bg-ipgs-white border-b border-ipgs-light-gray">
+      <div className="container-max h-16 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-md bg-ipgs-navy flex items-center justify-center">
+            <Award size={16} className="text-ipgs-gold" />
+          </div>
+          <span className="font-semibold text-ipgs-navy text-sm">IUC YLP</span>
         </div>
-        <div class="box">
-          <h3>Duration</h3>
-          <p>3 months</p>
+        <div className="text-xs text-ipgs-secondary">Your Conditional Offer Letter Awaits</div>
+      </div>
+    </nav>
+  );
+}
+
+/* ─────────────────────── Hero ─────────────────────── */
+function Hero() {
+  return (
+    <section className="section-spacing bg-ipgs-white">
+      <div className="container-max text-center">
+        <div className="reveal mb-6">
+          <div className="inline-block px-4 py-1.5 rounded-full bg-ipgs-light-gray text-ipgs-secondary text-xs font-medium mb-8">
+            Your Next Step Awaits
+          </div>
         </div>
-        <div class="box">
-          <h3>Class Schedule</h3>
-          <p>Weekend classes</p>
+
+        <h1 className="heading-1 mb-6 reveal">
+          Congratulations, Your Conditional Offer Letter Has Been Issued
+        </h1>
+
+        <p className="text-lg text-ipgs-secondary max-w-2xl mx-auto mb-10 reveal">
+          You are now one step closer to joining the <span className="font-semibold text-ipgs-navy">Young Lecturer Program (YLP)</span>, an online
+          weekend-based program jointly offered by Yayasan Pendidikan Rakyat (YPR) and Innovative University College (IUC).
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 reveal">
+          <a href="#payment" className="btn-primary inline-flex items-center justify-center gap-2">
+            Secure My Placement
+            <ArrowRight size={16} />
+          </a>
+          <a href="#faq" className="btn-secondary inline-flex items-center justify-center gap-2">
+            Contact Admission Advisor
+          </a>
+        </div>
+
+        <div className="reveal">
+          <p className="text-sm text-ipgs-secondary">
+            ✓ Your spot is reserved with your Conditional Offer Letter
+          </p>
         </div>
       </div>
-    </div>
+    </section>
+  );
+}
 
-    <div class="card">
-      <h2 class="blue-title">Young Lecturer Program 2.0</h2>
-      <ul>
-        <li>10 weeks of theory + 2 weeks of practicum</li>
-        <li>Scholarship provided — no repayment required upon completion of studies</li>
-        <li>Guideline teaching permit provided</li>
-        <li>Learn the skills of a lecturer</li>
-        <li>Potential to become a lecturer at Innovative University College (IUC)</li>
-      </ul>
-    </div>
+/* ─────────────────────── About Program ─────────────────────── */
+function AboutProgram() {
+  return (
+    <section className="section-spacing bg-ipgs-light-gray">
+      <div className="container-max">
+        <div className="text-center mb-12 reveal">
+          <h2 className="heading-2">About the Young Lecturer Program</h2>
+        </div>
 
-    <div class="card">
-      <h2 class="blue-title">What Will You Learn?</h2>
-      <ul>
-        <li>Basic understanding of MQA-01, MQA-02, COPPA and COPIA documentation</li>
-        <li>Build lesson plan and course structure</li>
-        <li>Understand credit distribution</li>
-        <li>Build academic calendar and timetable</li>
-        <li>Understand and analyse Jadual Spesifikasi Ujian (JSU)</li>
-        <li>Conduct lectures through Open and Distance Learning (ODL)</li>
-        <li>Develop e-book and lecture notes</li>
-      </ul>
-    </div>
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="reveal">
+            <p className="text-ipgs-secondary text-lg leading-relaxed mb-6">
+              The Young Lecturer Program is designed for ambitious graduates who aspire to build careers in academia. This intensive 3-month online program equips you with the essential knowledge, skills, and credentials needed to become a professional lecturer.
+            </p>
 
-    <div class="card">
-      <h2 class="blue-title">Program Outcomes</h2>
-      <ul>
-        <li>Certification of Completion</li>
-        <li>Teaching Permit Guideline Provided</li>
-        <li>Potential ODL lecturer role</li>
-        <li>Potential full-time lecturing opportunity with IUC, subject to performance</li>
-      </ul>
-    </div>
-  </div>
-</section>
+            <ul className="space-y-4">
+              {[
+                { icon: '📚', title: '100% Online Learning', desc: 'Study from anywhere at your own pace' },
+                { icon: '📅', title: 'Weekend Classes', desc: 'Designed for working professionals' },
+                { icon: '⏱️', title: '3 Month Duration', desc: 'Intensive, focused curriculum' },
+                { icon: '🎯', title: 'Career-Ready', desc: 'Graduate with a professional credential' },
+              ].map((item, i) => (
+                <li key={i} className="reveal reveal-stagger-1 flex gap-4">
+                  <span className="text-2xl">{item.icon}</span>
+                  <div>
+                    <h4 className="font-semibold text-ipgs-navy">{item.title}</h4>
+                    <p className="text-sm text-ipgs-secondary">{item.desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-<section id="payment">
-  <div class="container">
-    <div class="card center">
-      <h2>Secure Your Placement</h2>
-      <p>
-        Your Conditional Offer Letter has been issued. To confirm your placement, please complete your registration payment below.
-      </p>
-
-      <div class="price">Registration Fee: RM100</div>
-
-      <!-- TUKAR LINK PAYMENT GATEWAY DI SINI -->
-      <a href="https://your-payment-link-here.com" class="btn" target="_blank">
-        Pay Registration Fee
-      </a>
-
-      <br><br>
-
-      <a href="https://wa.me/601140285850" class="btn btn-blue" target="_blank">
-        Need Help? WhatsApp Admission Advisor
-      </a>
-
-      <div class="note">
-        Placement is subject to successful payment verification by the admission team.
+          <div className="reveal">
+            <div className="bg-ipgs-white rounded-xl p-8 card-shadow premium-border">
+              <h3 className="heading-3 mb-6">Perfect For You If</h3>
+              <ul className="space-y-3">
+                {[
+                  'You recently graduated and want to pursue academia',
+                  'You hold a degree and seek a teaching career',
+                  'You want to transition into the education sector',
+                  'You are working and desire flexible learning',
+                  'You want to enhance your professional profile',
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <CheckCircle size={18} className="text-ipgs-gold mt-0.5 shrink-0" />
+                    <span className="text-sm text-ipgs-primary">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
+  );
+}
+
+/* ─────────────────────── Who Is This For ─────────────────────── */
+function WhoIsThisFor() {
+  const personas = [
+    { title: 'Recent Graduates', desc: 'Start your teaching career immediately after graduation' },
+    { title: 'Degree Holders', desc: 'Leverage your qualification to become a lecturer' },
+    { title: 'Master\'s Holders', desc: 'Transition into academia with advanced knowledge' },
+    { title: 'PhD Holders', desc: 'Prepare for academic roles beyond research' },
+    { title: 'Working Professionals', desc: 'Transition to academia while maintaining employment' },
+    { title: 'Career Changers', desc: 'Explore new income opportunities in education' },
+  ];
+
+  return (
+    <section className="section-spacing bg-ipgs-white">
+      <div className="container-max">
+        <div className="text-center mb-12 reveal">
+          <h2 className="heading-2">Who Is This Program For?</h2>
+          <p className="text-ipgs-secondary text-lg mt-4">YLP welcomes ambitious individuals at all stages of their careers.</p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {personas.map((p, i) => (
+            <div
+              key={i}
+              className="reveal bg-ipgs-light-gray rounded-xl p-6 card-shadow hover:bg-opacity-80 transition-colors duration-300"
+              style={{ animationDelay: `${i * 0.1}s` }}
+            >
+              <div className="w-10 h-10 rounded-lg bg-ipgs-navy/10 flex items-center justify-center mb-4">
+                <Users size={20} className="text-ipgs-navy" />
+              </div>
+              <h3 className="font-semibold text-ipgs-navy mb-2">{p.title}</h3>
+              <p className="text-sm text-ipgs-secondary">{p.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────── Program Info ─────────────────────── */
+function ProgramInfo() {
+  return (
+    <section className="section-spacing bg-ipgs-light-gray">
+      <div className="container-max">
+        <div className="text-center mb-12 reveal">
+          <h2 className="heading-2">Program Information at a Glance</h2>
+        </div>
+
+        <div className="grid sm:grid-cols-3 gap-6 mb-10">
+          {[
+            { icon: Monitor, title: 'Learning Mode', desc: '100% Online' },
+            { icon: Clock, title: 'Duration', desc: '3 Months' },
+            { icon: BookOpen, title: 'Schedule', desc: 'Weekend Classes' },
+          ].map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={i}
+                className="reveal bg-ipgs-white rounded-xl p-8 text-center card-shadow premium-border"
+                style={{ animationDelay: `${i * 0.1}s` }}
+              >
+                <div className="w-12 h-12 rounded-lg bg-ipgs-navy/5 flex items-center justify-center mx-auto mb-4">
+                  <Icon size={24} className="text-ipgs-navy" />
+                </div>
+                <h3 className="font-semibold text-ipgs-navy mb-2">{item.title}</h3>
+                <p className="text-xl gold-accent">{item.desc}</p>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="reveal bg-ipgs-white rounded-xl p-8 premium-border">
+          <div className="grid md:grid-cols-2 gap-6 text-center">
+            {[
+              { label: 'Cohort Size', value: 'Small, intimate groups' },
+              { label: 'Mentorship', value: 'Direct faculty guidance' },
+              { label: 'Certification', value: 'Recognized credential' },
+              { label: 'Support', value: 'Dedicated admissions team' },
+            ].map((item, i) => (
+              <div key={i}>
+                <p className="text-sm text-ipgs-secondary mb-1">{item.label}</p>
+                <p className="font-semibold text-ipgs-navy">{item.value}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────── What You Learn ─────────────────────── */
+function WhatYouLearn() {
+  const topics = [
+    'Understanding MQA Documentation',
+    'COPPA and COPIA Frameworks',
+    'Course Structure Development',
+    'Lesson Plan Development',
+    'Academic Calendar Planning',
+    'Timetable Planning',
+    'JSU Development',
+    'ODL Teaching Skills',
+    'E-book Development',
+    'Professional Lecture Note Preparation',
+  ];
+
+  return (
+    <section className="section-spacing bg-ipgs-white">
+      <div className="container-max">
+        <div className="text-center mb-12 reveal">
+          <h2 className="heading-2">What You Will Learn</h2>
+          <p className="text-ipgs-secondary text-lg mt-4">
+            Master essential skills and knowledge for a successful teaching career.
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {topics.map((topic, i) => (
+            <div
+              key={i}
+              className="reveal bg-ipgs-light-gray rounded-lg p-5 flex items-center gap-3 hover:bg-ipgs-gold/5 transition-colors duration-300"
+              style={{ animationDelay: `${(i % 5) * 0.1}s` }}
+            >
+              <div className="w-8 h-8 rounded-full bg-ipgs-gold/20 flex items-center justify-center shrink-0">
+                <span className="text-ipgs-gold font-bold text-sm">✓</span>
+              </div>
+              <span className="text-ipgs-primary font-medium">{topic}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────── Program Outcomes ─────────────────────── */
+function ProgramOutcomes() {
+  return (
+    <section className="section-spacing bg-ipgs-light-gray">
+      <div className="container-max">
+        <div className="text-center mb-12 reveal">
+          <h2 className="heading-2">Program Outcomes</h2>
+          <p className="text-ipgs-secondary text-lg mt-4">
+            Upon completion, you will achieve the following outcomes.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {[
+            { title: 'Certificate of Completion', desc: 'Earn a professional credential recognized by educators and institutions.' },
+            { title: 'Teaching Permit Guideline', desc: 'Understand the requirements and process for obtaining teaching permits.' },
+            { title: 'ODL Lecturer Opportunities', desc: 'Become eligible for online distance learning teaching positions.' },
+            { title: 'Full-Time Lecturer Opportunities', desc: 'Performance-based placement in full-time academic roles.' },
+          ].map((outcome, i) => (
+            <div
+              key={i}
+              className="reveal bg-ipgs-white rounded-xl p-7 premium-border card-shadow"
+              style={{ animationDelay: `${(i * 0.1)}s` }}
+            >
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-lg bg-ipgs-gold/10 flex items-center justify-center shrink-0 mt-0.5">
+                  <Award size={20} className="text-ipgs-gold" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-ipgs-navy mb-2">{outcome.title}</h3>
+                  <p className="text-sm text-ipgs-secondary">{outcome.desc}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────── Testimonials ─────────────────────── */
+function Testimonials() {
+  const [current, setCurrent] = useState(0);
+
+  const testimonials = [
+    {
+      text: 'This program gave me confidence and practical exposure to the academic environment. The learning experience was highly valuable.',
+      author: 'YLP Participant',
+      rating: 5,
+    },
+    {
+      text: 'The weekend structure allowed me to continue working while preparing myself for a future academic career.',
+      author: 'YLP Graduate',
+      rating: 5,
+    },
+    {
+      text: 'The knowledge gained from this program helped me understand academic documentation, course planning and teaching practices.',
+      author: 'YLP Participant',
+      rating: 5,
+    },
+  ];
+
+  const next = () => setCurrent((current + 1) % testimonials.length);
+  const prev = () => setCurrent((current - 1 + testimonials.length) % testimonials.length);
+
+  const t = testimonials[current];
+
+  return (
+    <section className="section-spacing bg-ipgs-white">
+      <div className="container-max">
+        <div className="text-center mb-12 reveal">
+          <h2 className="heading-2">Success Stories & Testimonials</h2>
+        </div>
+
+        <div className="max-w-2xl mx-auto reveal">
+          <div className="bg-ipgs-light-gray rounded-xl p-8 md:p-10">
+            <div className="flex gap-1 mb-6">
+              {[...Array(t.rating)].map((_, i) => (
+                <Star key={i} size={16} fill="#F59E0B" className="text-yellow-400" />
+              ))}
+            </div>
+
+            <p className="text-lg md:text-xl text-ipgs-primary mb-8 italic leading-relaxed">
+              "{t.text}"
+            </p>
+
+            <p className="font-semibold text-ipgs-navy text-sm uppercase tracking-wide">{t.author}</p>
+          </div>
+
+          <div className="flex justify-center gap-3 mt-8">
+            <button
+              onClick={prev}
+              className="p-2 rounded-lg bg-ipgs-light-gray hover:bg-ipgs-gold/10 transition-colors duration-200"
+              aria-label="Previous testimonial"
+            >
+              <ChevronLeft size={20} className="text-ipgs-navy" />
+            </button>
+            <div className="flex gap-2 items-center">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrent(i)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    i === current ? 'bg-ipgs-gold w-8' : 'bg-ipgs-secondary'
+                  }`}
+                  aria-label={`Testimonial ${i + 1}`}
+                />
+              ))}
+            </div>
+            <button
+              onClick={next}
+              className="p-2 rounded-lg bg-ipgs-light-gray hover:bg-ipgs-gold/10 transition-colors duration-200"
+              aria-label="Next testimonial"
+            >
+              <ChevronRight size={20} className="text-ipgs-navy" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────── Why Choose YLP ─────────────────────── */
+function WhyChooseYLP() {
+  const features = [
+    { title: 'Online Learning', desc: 'Learn on your schedule from anywhere in the world.' },
+    { title: 'Weekend Schedule', desc: 'Classes designed to fit around your work commitments.' },
+    { title: 'Working Adult Friendly', desc: 'Flexible curriculum for professionals in transition.' },
+    { title: 'Lecturer Career Pathway', desc: 'Clear trajectory from completion to teaching roles.' },
+    { title: 'Professional Exposure', desc: 'Industry-standard academic practices and tools.' },
+    { title: 'Supportive Environment', desc: 'Dedicated mentorship and peer learning community.' },
+  ];
+
+  return (
+    <section className="section-spacing bg-ipgs-light-gray">
+      <div className="container-max">
+        <div className="text-center mb-12 reveal">
+          <h2 className="heading-2">Why Applicants Choose YLP</h2>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((f, i) => (
+            <div
+              key={i}
+              className="reveal bg-ipgs-white rounded-xl p-7 premium-border card-shadow"
+              style={{ animationDelay: `${(i % 6) * 0.1}s` }}
+            >
+              <h3 className="font-semibold text-ipgs-navy mb-3">{f.title}</h3>
+              <p className="text-sm text-ipgs-secondary">{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────── FAQ ─────────────────────── */
+function FAQ() {
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
+
+  const faqs = [
+    {
+      q: 'Who issues the teaching permit?',
+      a: 'The teaching permit is issued by the relevant educational authority upon meeting the program requirements and qualifications set out by Ministry of Higher Education and professional bodies.',
+    },
+    {
+      q: 'Will I be bonded to IUC?',
+      a: 'No, there is no mandatory bonding clause. Upon completion, you are free to seek employment with any institution. However, IUC will prioritize placements for top performers.',
+    },
+    {
+      q: 'Can working adults join?',
+      a: 'Absolutely! The program is specifically designed for working professionals with flexible weekend classes and online learning, allowing you to maintain your current employment.',
+    },
+    {
+      q: 'Is the program fully online?',
+      a: 'Yes, the program is 100% online with weekend class sessions. You can participate from anywhere with an internet connection.',
+    },
+    {
+      q: 'Can I apply to become a lecturer after completing the program?',
+      a: 'Yes, upon successful completion, you will be eligible to apply for lecturer positions. The program provides credentials and practical experience needed for academic roles.',
+    },
+  ];
+
+  return (
+    <section id="faq" className="section-spacing bg-ipgs-white">
+      <div className="container-max max-w-3xl">
+        <div className="text-center mb-12 reveal">
+          <h2 className="heading-2">Frequently Asked Questions</h2>
+        </div>
+
+        <div className="space-y-3 reveal">
+          {faqs.map((faq, i) => (
+            <div
+              key={i}
+              className="border border-ipgs-light-gray rounded-lg overflow-hidden hover:border-ipgs-gold/30 transition-colors duration-300"
+            >
+              <button
+                className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-ipgs-light-gray/50 transition-colors duration-200"
+                onClick={() => setOpenIdx(openIdx === i ? null : i)}
+              >
+                <span className="font-semibold text-ipgs-navy pr-4">{faq.q}</span>
+                <ChevronDown
+                  size={20}
+                  className={`text-ipgs-gold shrink-0 transition-transform duration-300 ${
+                    openIdx === i ? 'rotate-180' : ''
+                  }`}
+                />
+              </button>
+              {openIdx === i && (
+                <div className="px-6 py-4 bg-ipgs-light-gray/30 border-t border-ipgs-light-gray">
+                  <p className="text-ipgs-secondary text-sm leading-relaxed">{faq.a}</p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────── Payment ─────────────────────── */
+function Payment() {
+  return (
+    <section id="payment" className="section-spacing bg-ipgs-light-gray">
+      <div className="container-max max-w-2xl">
+        <div className="text-center mb-12 reveal">
+          <h2 className="heading-2">Secure Your Placement Today</h2>
+          <p className="text-ipgs-secondary text-lg mt-4">
+            Your Conditional Offer Letter has been issued. Complete your registration payment to confirm your placement.
+          </p>
+        </div>
+
+        <div className="reveal bg-ipgs-white rounded-xl p-8 card-shadow premium-border mb-8 text-center">
+          <p className="text-ipgs-secondary text-sm mb-2">Registration Fee</p>
+          <p className="text-4xl md:text-5xl font-bold text-ipgs-gold mb-6">RM 100</p>
+          <p className="text-sm text-ipgs-secondary">
+            Secure your placement in the program. This is a one-time fee.
+          </p>
+        </div>
+
+        <div className="reveal flex flex-col gap-4">
+          <a href="#" className="btn-primary w-full text-center">
+            Pay Registration Fee
+          </a>
+
+          <a
+            href="https://wa.me/601140285850"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-secondary w-full text-center flex items-center justify-center gap-2"
+          >
+            <MessageCircle size={18} />
+            WhatsApp Admission Advisor
+          </a>
+        </div>
+
+        <p className="text-xs text-ipgs-secondary text-center mt-6">
+          Your payment is secure and encrypted. We accept major payment methods.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────── Final CTA ─────────────────────── */
+function FinalCTA() {
+  return (
+    <section className="section-spacing bg-ipgs-navy text-ipgs-white">
+      <div className="container-max text-center max-w-2xl">
+        <div className="reveal mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold leading-tight">
+            Ready To Begin Your Lecturer Journey?
+          </h2>
+        </div>
+
+        <p className="text-lg text-ipgs-light-gray mb-10 reveal">
+          Complete your registration today and take the next step towards your academic career.
+        </p>
+
+        <div className="reveal">
+          <a href="#payment" className="btn-gold inline-flex items-center gap-2">
+            Secure My Placement
+            <ArrowRight size={18} />
+          </a>
+        </div>
+
+        <p className="text-sm text-ipgs-gold/60 mt-8 reveal">
+          Questions? Reach out to our admission team on WhatsApp.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────── Footer ─────────────────────── */
+function Footer() {
+  return (
+    <footer className="bg-ipgs-primary text-ipgs-white py-10">
+      <div className="container-max text-center text-sm text-ipgs-light-gray">
+        <p className="mb-4">
+          Young Lecturer Program (YLP) by Innovative University College (IUC) & Yayasan Pendidikan Rakyat (YPR)
+        </p>
+        <div className="flex flex-wrap justify-center gap-6 text-xs">
+          <a href="#" className="hover:text-ipgs-gold transition-colors">Privacy Policy</a>
+          <a href="#" className="hover:text-ipgs-gold transition-colors">Terms of Service</a>
+          <a href="#" className="hover:text-ipgs-gold transition-colors">Contact Us</a>
+        </div>
+        <p className="mt-6 text-xs text-ipgs-secondary">
+          © 2025 Innovative University College. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  );
+}
+
+/* ─────────────────────── App ─────────────────────── */
+export default function App() {
+  return (
+    <div className="min-h-screen bg-ipgs-white">
+      <Nav />
+      <Hero />
+      <AboutProgram />
+      <WhoIsThisFor />
+      <ProgramInfo />
+      <WhatYouLearn />
+      <ProgramOutcomes />
+      <Testimonials />
+      <WhyChooseYLP />
+      <FAQ />
+      <Payment />
+      <FinalCTA />
+      <Footer />
     </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="card">
-      <h2 class="blue-title">Frequently Asked Questions</h2>
-
-      <details open>
-        <summary>Who issues the teaching permit?</summary>
-        <p>The teaching permit is issued by the Ministry of Higher Education (MOHE).</p>
-      </details>
-
-      <details>
-        <summary>Will I be bound to Innovative University College after completing this course?</summary>
-        <p>No automatic bond. Opportunities are subject to performance, availability and selection process.</p>
-      </details>
-
-      <details>
-        <summary>Is this program conducted online or in person?</summary>
-        <p>The program is conducted online.</p>
-      </details>
-
-      <details>
-        <summary>On which days are the classes held?</summary>
-        <p>Classes are held during weekends.</p>
-      </details>
-
-      <details>
-        <summary>Can I apply to be a lecturer at IUC?</summary>
-        <p>Yes, selected candidates may be considered for lecturing opportunities, subject to performance and university requirements.</p>
-      </details>
-
-      <details>
-        <summary>What if I am working and cannot attend weekdays?</summary>
-        <p>This program is designed with weekend classes to support working adults.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<footer>
-  © 2026 Innovative University College. All rights reserved.
-</footer>
-
-</body>
-</html>
+  );
+}
